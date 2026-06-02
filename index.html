@@ -338,11 +338,6 @@
 
   <script>
     // ── CONFIG ───────────────────────────────────────────────────
-    // Replace with your actual GitHub username, repo, and branch
-    const GITHUB_USER   = "amandamurray19";
-    const GITHUB_REPO   = "duke_albemarle_images";
-    const GITHUB_BRANCH = "main";
-
     // Change this to your actual password
     // For better security, use a hash — run: btoa('yourpassword') in browser console
     // and set USE_HASH = true
@@ -390,7 +385,8 @@
 
     // ── DATA LOADING ─────────────────────────────────────────────
     function rawUrl(path) {
-      return `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${path}`;
+      // Served directly by Netlify — use relative paths
+      return `/${path}`;
     }
 
     async function loadDashboard() {
