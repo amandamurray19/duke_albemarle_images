@@ -223,6 +223,32 @@
       border-top: 1px solid var(--border);
     }
 
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 5px 10px;
+      border: 1px solid var(--accent2);
+      background: transparent;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .download-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .download-btn svg {
+      flex-shrink: 0;
+    }
+
     .image-date {
       font-family: var(--mono);
       font-size: 12px;
@@ -445,6 +471,7 @@
 
           const card = document.createElement('div');
           card.className = 'image-card';
+          const dlFilename = `${date}_${regionLabel(region).replace(/ /g,'_')}.jpg`;
           card.innerHTML = `
             <img
               src="${imgUrl}"
@@ -454,7 +481,20 @@
             />
             <div class="image-card-meta">
               <span class="image-date">${formatDate(date)}</span>
-              <span class="image-label">${regionLabel(region)}</span>
+              <div style="display:flex;align-items:center;gap:12px">
+                <span class="image-label">${regionLabel(region)}</span>
+                <a
+                  class="download-btn"
+                  href="${imgUrl}"
+                  download="${dlFilename}"
+                  title="Download image"
+                >
+                  <svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 1v7M3 5.5l3 3 3-3M1 10h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Download
+                </a>
+              </div>
             </div>
           `;
           grid.appendChild(card);
