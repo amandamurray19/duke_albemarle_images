@@ -509,7 +509,8 @@
         }
 
       } catch(e) {
-        grid.innerHTML = '<div class="no-images">Could not load images.</div>';
+        console.error('loadRegionImages error:', e);
+        grid.innerHTML = `<div class="no-images">Could not load images: ${e.message}</div>`;
       }
     }
 
