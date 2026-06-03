@@ -411,8 +411,8 @@
 
     // ── DATA LOADING ─────────────────────────────────────────────
     function rawUrl(path) {
-      // Served directly by Netlify — use relative paths
-      return `/${path}`;
+      // Use relative paths — works for both GitHub Pages subdirectory and root domains
+      return `./${path}`;
     }
 
     async function loadDashboard() {
